@@ -1,0 +1,39 @@
+<koken:include file="inc/header.html" />
+<!-- Main -->
+<div id="main">
+  <koken:load source="albums" filter:featured="false">
+    <koken:loop>
+
+      <!-- Post -->
+      <article class="post">
+        <header>
+          <div class="title">
+            <h2><a href="#">{{ album.title }}</a></h2>
+            <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+          </div>
+          <div class="meta">
+            <time class="published" datetime="{{ album.published_on date_format=" Y-m-d
+            " }}">{{ album.published_on date_format="j F Y" }}</time>
+          </div>
+        </header>
+        <koken:link class="image featured">
+          <koken:img width="691" height="281" crop="true"/>
+        </koken:link>
+        <p>{{ album.summary }}</p>
+        <footer>
+          <ul class="actions">
+            <li><a href="#" class="button big">Continue Reading</a></li>
+          </ul>
+          <ul class="stats">
+            <li><a href="#">General</a></li>
+            <li><a href="#" class="icon fa-heart">28</a></li>
+            <li><a href="#" class="icon fa-comment">128</a></li>
+          </ul>
+        </footer>
+      </article>
+    </koken:loop>
+  </koken:load>
+</div>
+
+<koken:include file="inc/sidebar.html" />
+<koken:include file="inc/footer.html" />

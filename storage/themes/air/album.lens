@@ -1,0 +1,28 @@
+<koken:include file="inc/header.html" />
+<!-- Main -->
+<div id="main">
+  <koken:load>
+    <h2>{{ album.title }}</h2>
+    {{ album.description paragraphs="true" }}
+    <p>
+      <koken:time />
+    </p>
+    <div class="row uniform">
+      <koken:loop>
+        <div class="4u">
+          <span class="image fit">
+          <koken:link>
+            <koken:img />
+          </koken:link>
+          </span>
+        </div>
+      </koken:loop>
+    </div>
+    <koken:else>
+      <koken:note>
+        No album data found
+      </koken:note>
+  </koken:load>
+</div>
+<koken:include file="inc/sidebar.html" />
+<koken:include file="inc/footer.html" />

@@ -1,0 +1,23 @@
+{
+  "name": "air",
+  "version": "1.0.0",
+  "description": "Koken Air theme",
+  "author": "Mathieu Andrews",
+  "scripts": {
+    "build": "grunt",
+    "dev": "grunt sync &"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "grunt": "^1.0.1",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-exec": "^1.0.0",
+    "grunt-sass": "^2.0.0",
+    "load-grunt-tasks": "^3.5.2",
+    "time-grunt": "^1.4.0",
+    "uikit": "^3.0.0-beta.30"
+  }
+}
