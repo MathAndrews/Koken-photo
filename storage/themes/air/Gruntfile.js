@@ -43,7 +43,7 @@ module.exports = function (grunt) {
     },
     'sass': {
       options: {
-        outputStyle: 'compressed', // nested, expanded, compact, compressed
+        outputStyle: 'nested', // nested, expanded, compact, compressed
         //outputStyle: 'nested',
         outFile: cssPath,
         sourceMap: false,

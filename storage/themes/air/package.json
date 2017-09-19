@@ -16,6 +16,7 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-exec": "^1.0.0",
     "grunt-sass": "^2.0.0",
+    "isotope-layout": "^3.0.4",
     "load-grunt-tasks": "^3.5.2",
     "time-grunt": "^1.4.0",
     "uikit": "^3.0.0-beta.30"
