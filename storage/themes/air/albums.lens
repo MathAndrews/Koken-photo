@@ -3,13 +3,12 @@
 <div id="main">
   <koken:load source="albums" filter:featured="false">
     <koken:loop>
-
       <!-- Post -->
       <article class="post">
         <header>
           <div class="title">
-            <h2><a href="#">{{ album.title }}</a></h2>
-            <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+            <h2><koken:link>{{ album.title }}</a></koken:link></h2>
+            <p>{{ album.summary }}</p>
           </div>
           <div class="meta">
             <time class="published" datetime="{{ album.published_on date_format=" Y-m-d
@@ -17,21 +16,35 @@
           </div>
         </header>
         <koken:link class="image featured">
-          <koken:img width="691" height="281" crop="true"/>
+          <koken:img size="691:281" width="691" height="281" crop="true" />
         </koken:link>
         <p>{{ album.summary }}</p>
         <footer>
           <ul class="actions">
             <li><a href="#" class="button big">Continue Reading</a></li>
           </ul>
-          <ul class="stats">
-            <li><a href="#">General</a></li>
-            <li><a href="#" class="icon fa-heart">28</a></li>
-            <li><a href="#" class="icon fa-comment">128</a></li>
-          </ul>
+
+          <koken:tags>
+            {{ count }}
+            <ul class="tags" >
+              <koken:loop separator=" " limit="3">
+                <li>
+                  <!-- Link each to archive.contents.lens to view other images/videos assigned same tag -->
+                  <koken:link to="tags" title="View all {{ labels.content.plural case='lower' }} in #{{ tag.title }}">
+                    #{{ tag.title }}
+                  </koken:link>
+                </li>
+              </koken:loop>
+            </ul >
+          </koken:tags>
         </footer>
       </article>
     </koken:loop>
+
+    <koken:else>
+      <koken:note>
+        No public albums found 1
+      </koken:note>
   </koken:load>
 </div>
 
