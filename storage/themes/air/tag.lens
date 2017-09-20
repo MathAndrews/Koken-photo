@@ -5,7 +5,10 @@
     <header>
       <div class="title">
         <h2>Tag</h2>
-        <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+        <blockquote>
+          There are always two people in every picture: the photographer and the viewer.
+          <div class="author">Ansel Adams</div>
+        </blockquote>
       </div>
       <div class="meta">
         <time class="published" datetime="2015-10-18">October 18, 2015</time>

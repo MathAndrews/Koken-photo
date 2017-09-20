@@ -10,7 +10,7 @@
   .grid-isotope .grid-item {
     float: left;
     margin-bottom: 10px;
-    height: 600px;
+    height: 350px;
     background: #ffffff;
     border: solid 1px rgba(160, 160, 160, 0.3); }
     .grid-isotope .grid-item .item-image {
@@ -30,29 +30,50 @@
         -webkit-transition: -webkit-transform 0.2s ease-out;
         -ms-transition: -ms-transform 0.2s ease-out;
         transition: transform 0.2s ease-out; }
-    .grid-isotope .grid-item h3 {
+    .grid-isotope .grid-item time.published {
+      color: #3c3b3b;
+      display: block;
+      font-family: "Raleway", Helvetica, sans-serif;
+      font-size: 0.7em;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      margin-top: 0.5em;
+      text-transform: uppercase;
+      white-space: nowrap; }
+    .grid-isotope .grid-item h3,
+    .grid-isotope .grid-item time.published,
+    .grid-isotope .grid-item p.caption {
       margin: 10px; }
+    .grid-isotope .grid-item p.caption {
+      line-height: 1; }
     .grid-isotope .grid-item footer {
-      padding: 10px; }
+      padding-left: 10px;
+      padding-right: 10px; }
       .grid-isotope .grid-item footer .tags {
         cursor: default;
         list-style: none;
         padding: 0;
         margin: 0; }
+        .grid-isotope .grid-item footer .tags:after, .grid-isotope .grid-item footer .tags:before {
+          display: table;
+          content: " "; }
+        .grid-isotope .grid-item footer .tags:after {
+          clear: both; }
         .grid-isotope .grid-item footer .tags li {
-          display: inline-block;
+          float: left;
           font-family: "Raleway", Helvetica, sans-serif;
           font-size: 0.6em;
           font-weight: 400;
           letter-spacing: 0.25em;
-          line-height: 1;
-          margin: 0 0 0 5px;
+          margin: 0 5px 0 0;
           padding: 0;
           text-transform: uppercase; }
           .grid-isotope .grid-item footer .tags li:first-child {
             border-left: 0;
             margin-left: 0;
             padding-left: 0; }
+          .grid-isotope .grid-item footer .tags li ~ li {
+            margin-right: 5px; }
   .grid-isotope .grid-item--width2 {
     width: 60%; }
 

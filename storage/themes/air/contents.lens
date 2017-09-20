@@ -1,61 +1,66 @@
 <koken:include file="inc/header.html" />
 <!-- Main -->
-<div id="main" >
-    <article class="post" >
-        <header >
-            <div class="title" >
-                <h2 >Latest uploads</h2 >
-                <blockquote >
-                    There are always two people in every picture: the photographer and the viewer.
-                    <div class="author" >Ansel Adams</div>
-                </blockquote >
-            </div >
-            <div class="meta" >
-                <time class="published" datetime="2015-10-18" >October 18, 2015</time >
-                <span class="author" >
-                    <span class="name" >Mathieu</span >
+<div id="main">
+  <article class="post">
+    <koken:load order_direction="desc">
+      <header>
+        <div class="title">
+          <h2>Latest uploads</h2>
+          <blockquote>
+            There are always two people in every picture: the photographer and the viewer.
+            <div class="author">Ansel Adams</div>
+          </blockquote>
+        </div>
+        <div class="meta">
+          <koken:first>
+            <time class="published" datetime="{{ content.published_on date_format=" Y-m-d
+            " }}">{{ content.published_on date_format="j F Y" }}</time>
+          </koken:first>
+          <span class="author">
+                    <span class="name">Mathieu</span>
           <img src="{{ location.theme_path }}/images/logo.png" alt="" />
-              </span >
-            </div >
-        </header >
-        <koken:load order_direction="desc" >
-            <div class="grid-isotope" >
-                <div class="grid-sizer" ></div >
-                <koken:loop >
-                    <div class="grid-item" >
-                        <koken:link class="item-image" >
-                            <koken:img ratio="1:2" crop="true" />
-                        </koken:link >
-                        <h3 >
-                            <koken:link >
-                                {{ content.title | content.filename }}
-                            </koken:link >
-                        </h3 >
-                        <footer >
-                            <koken:tags >
-                                <ul class="tags" >
-                                    <koken:loop separator=" " limit="3" >
-                                        <li >
-                                            <!-- Link each to archive.contents.lens to view other images/videos assigned same tag -->
-                                            <koken:link to="tags"
-                                                        title="View all {{ labels.content.plural case='lower' }} in #{{ tag.title }}" >
-                                                #{{ tag.title }}
-                                            </koken:link >
-                                        </li >
-                                    </koken:loop >
-                                </ul >
-                            </koken:tags >
-                        </footer >
-                    </div >
-                </koken:loop >
-            </div >
-            <koken:else >
-                <koken:note >
-                    No images or videos found
-                </koken:note >
-        </koken:load >
-    </article >
-</div >
+              </span>
+        </div>
+      </header>
+      <div class="grid-isotope">
+        <div class="grid-sizer"></div>
+        <koken:loop>
+          <div class="grid-item">
+            <koken:link class="item-image">
+              <koken:img ratio="1:2" crop="true" />
+            </koken:link>
+            <h3>
+              <koken:link>
+                {{ content.title | content.filename }}
+              </koken:link>
+            </h3>
+            <time class="published">
+              {{ content.published_on date_format="j F Y" }}
+            </time>
+            <footer>
+              <koken:tags>
+                <ul class="tags">
+                  <koken:loop separator=" " limit="3">
+                    <li>
+                      <!-- Link each to archive.contents.lens to view other images/videos assigned same tag -->
+                      <koken:link to="tags" title="View all {{ labels.content.plural case='lower' }} in #{{ tag.title }}">
+                        #{{ tag.title }}
+                      </koken:link>
+                    </li>
+                  </koken:loop>
+                </ul>
+              </koken:tags>
+            </footer>
+          </div>
+        </koken:loop>
+      </div>
+      <koken:else>
+        <koken:note>
+          No images or videos found
+        </koken:note>
+    </koken:load>
+  </article>
+</div>
 
 <koken:asset file="node_modules/isotope-layout/dist/isotope.pkgd.min.js" />
 <koken:asset file="js/init-isotope.js" />
