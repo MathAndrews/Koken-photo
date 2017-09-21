@@ -1,0 +1,282 @@
+<koken:include file="inc/header.html" />
+
+<!-- Load this template's source data (content) -->
+<koken:load>
+
+	<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
+	<koken:head>
+		<meta property="og:site_name" content="{{ site.title }}" />
+		<meta property="og:title" content="{{ content.title|content.filename strip_html="true" }}" />
+		<meta property="og:description" content="{{ content.caption strip_html="true" }}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
+		<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
+		<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
+		<meta property="og:url" content="{{ content.url }}" />
+		<koken:content_image>
+			<koken:not empty="profile.twitter">
+				<meta name="twitter:card" content="photo" />
+				<meta name="twitter:site" content="@{{ profile.twitter }}" />
+				<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+			</koken:not>
+		</koken:content_image>
+	</koken:head>
+
+	<!-- Display breadcrumb navigation -->
+	<nav id="bread" class="clearfix">
+
+		<!-- Display pagination links -->
+		<div id="content-pag">
+
+			<!-- Checks to see if content has a parent album. If so, label pagination links differently -->
+			<koken:parent>
+				<koken:variable name="previous_label" value="Previous" />
+				<koken:variable name="next_label" value="Next" />
+			<koken:else>
+				<koken:variable name="previous_label" value="Newer" />
+				<koken:variable name="next_label" value="Older" />
+			</koken:parent>
+
+			<koken:previous>
+				<koken:link title="{{ previous_label }}" bind_to_key="left">&larr; {{ previous_label }}</koken:link>
+			<koken:else>
+				<!-- display no link -->
+			</koken:previous>
+
+			&nbsp;
+
+			<!-- Display the context the image/video is being viewed in -->
+			<koken:context>
+				<!-- Viewing image/video with contextual criteria -->
+				<koken:link title="View {{ context.title }}">
+					{{ context.title }}
+				</koken:link>
+				<span>({{ context.position }} of {{ context.total }})</span>
+			<koken:else>
+				<!-- Viewing image/video independently -->
+				<koken:link to="contents" title="{{ labels.content.plural }}">{{ labels.content.plural }}</koken:link>
+				<span>({{ context.position }} of {{ context.total }})</span>
+			</koken:context>
+
+			&nbsp;
+
+			<koken:next>
+				<koken:link title="{{ next_label }}" bind_to_key="right">{{ next_label }} &rarr;</koken:link>
+			<koken:else>
+				<!-- display no link -->
+			</koken:next>
+
+		</div>
+
+		<koken:breadcrumbs />
+
+	</nav>
+
+	<!-- If image/video visibility is unlisted, show message -->
+	<koken:unlisted>
+		<p class="unlisted">
+			This page is unlisted. Please don't share a link to it.
+		</p>
+	</koken:unlisted>
+
+	<!-- Displayed if content is an image -->
+	<koken:content_image>
+
+		<!-- Load image in lightbox viewer if clicked -->
+		<koken:link lightbox="true" bind_to_key="l" title="View in lightbox">
+			<koken:img />
+		</koken:link>
+
+	</koken:content_image>
+
+	<!-- Displayed if content is a video -->
+	<koken:content_video>
+
+		<!-- Load the video -->
+		<koken:video />
+
+	</koken:content_video>
+
+	<!-- Display the content title or filename as a backup -->
+	<h2>
+		{{ content.title | content.filename }}
+	</h2>
+
+	<!-- Display the content caption -->
+	{{ content.caption paragraphs="true" }}
+
+	<footer>
+
+		<ul class="blank">
+
+			<!-- Opens the content in the lightbox viewer -->
+			<li>
+				<strong>Lightbox:</strong>
+				<koken:link lightbox="true" class="button" title="View in lightbox">View in lightbox</koken:link>
+			</li>
+
+			<!-- Display the timestamp (date published) -->
+			<!-- Link to archive.contents.lens to view all content captured the same month -->
+			<li>
+				<strong>Published:</strong>
+				<koken:link to="archive" title="View all {{ labels.content.plural case='lower' }} from this month">
+					<!-- Publish the date it was captured -->
+					<koken:time />
+				</koken:link>
+			</li>
+
+			<!-- Display uploaded date -->
+			<li>
+				<strong>Uploaded:</strong> <koken:time data="date_uploaded" />
+			</li>
+
+			<!-- Display duration if an imported video -->
+			<koken:content_video>
+				<li>
+					<strong>Duration:</strong> {{ content.duration }}
+				</li>
+			</koken:content_video>
+
+			<!-- Display assigned categories -->
+			<koken:categories>
+				<li>
+					<strong>Categories:</strong>
+					<koken:loop separator=", ">
+						<!-- Link each to archive.contents.lens to view other images/videos assigned same category -->
+						<koken:link title="View all {{ labels.content.plural case='lower' }} in {{ category.title }}">
+							{{ category.title }}
+						</koken:link>
+					</koken:loop>
+				</li>
+			</koken:categories>
+
+		    <!-- Display assigned tags -->
+			<koken:tags>
+				<li>
+					<strong>Tags:</strong>
+					<koken:loop separator=" ">
+						<!-- Link each to archive.contents.lens to view other images/videos assigned same tag -->
+						<koken:link title="View all {{ labels.content.plural case='lower' }} in #{{ tag.title }}">
+							#{{ tag.title }}
+						</koken:link>
+					</koken:loop>
+				</li>
+			</koken:tags>
+
+			<!-- Display EXIF data -->
+			<koken:exif>
+				<li class="comma_sep">
+					<strong>EXIF:</strong>
+					<koken:not empty="exif.model">
+						<span>{{ exif.model }}</span>
+					</koken:not>
+					<koken:not empty="exif.exposure">
+						<span>{{ exif.exposure }}</span>
+					</koken:not>
+					<koken:not empty="exif.aperture">
+						<span>{{ exif.aperture }}</span>
+					</koken:not>
+					<koken:not empty="exif.focal_length">
+						<span>{{ exif.focal_length }}</span>
+					</koken:not>
+					<koken:not empty="exif.iso_speed_ratings">
+						<span>{{ exif.iso_speed_ratings }}</span>
+					</koken:not>
+				</li>
+			</koken:exif>
+
+			<!-- Display IPTC data -->
+			<koken:iptc>
+				<li>
+					<strong>IPTC:</strong>
+				    <koken:loop separator="&nbsp;/">
+				        {{ iptc.label }}: {{ iptc.value }}
+				    </koken:loop>
+			  	</li>
+			</koken:iptc>
+
+			<!-- Display content license -->
+			<li>
+				<strong>License:</strong>
+				{{ content.license.clean }}
+			</li>
+
+			<!-- If content is an image and allows downloading, show download link -->
+			<koken:max_download>
+				<li>
+					<strong>Download image:</strong>
+					<koken:link title="Download image">
+						{{ max_download.label }}&nbsp;({{ max_download.width }}x{{ max_download.height }})
+					</koken:link>
+				</li>
+			<koken:else>
+				<li>
+					<strong>Download image: </strong>User has disabled downloads for this image.
+				</li>
+			</koken:max_download>
+
+			<!-- If viewing content in the context of an album, display link to parent album -->
+			<koken:parent>
+				<li>
+					<strong>From the album:</strong>
+					<koken:link title="View {{ album.title }}">
+						{{ album.title }}
+					</koken:link>
+				</li>
+			</koken:parent>
+
+			<!-- If content is included in one or more albums, display links to each album -->
+			<koken:albums>
+				<li>
+					<strong>Albums:</strong>
+					<koken:loop>
+						<koken:link title="View {{ album.title }}">
+							{{ album.title }}
+						</koken:link>
+					</koken:loop>
+				</li>
+			</koken:albums>
+
+			<!-- If content is imported from elsewhere (Vimeo, Instagram), show link to original page -->
+			<koken:not empty="{{ content.source.title }}">
+				<li>
+					<strong>Imported from:</strong>
+					<a href="{{ content.source.url }}" onclick="return !window.open(this.href);" title="View at {{ content.source.title }}">{{ content.source.title }}</a>
+				</li>
+			</koken:not>
+
+			<!-- Display a link to Google Maps to show where this photo was taken -->
+			<koken:geolocation>
+				<li>
+					<strong>Geolocation:</strong>
+					<a href="http://maps.google.com/?q={{ geolocation.latitude }},{{ geolocation.longitude }}" target="_blank">View map</a>
+				</li>
+			</koken:geolocation>
+
+			<!-- Display social share links if the content has public visibility -->
+			<koken:public>
+				<li>
+					<strong>Share:</strong>
+					<koken:link share="twitter">Twitter</koken:link>
+					<koken:link share="facebook">Facebook</koken:link>
+					<koken:link share="pinterest">Pinterest</koken:link>
+					<koken:link share="tumblr">Tumblr</koken:link>
+					<koken:link share="google-plus">Google+</koken:link>
+				</li>
+			</koken:public>
+
+		</ul>
+
+	</footer>
+
+	<!-- Fallback content if no data was loaded by koken:load -->
+	<koken:else>
+
+		<!-- Display fallback message in Site editor only -->
+		<koken:note>
+			No content found
+		</koken:note>
+
+</koken:load>
+
+<koken:include file="inc/footer.html" />

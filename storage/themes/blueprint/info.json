@@ -1,0 +1,20 @@
+{
+	"name": "Blueprint",
+	"version": "1.5.5",
+	"description": "Bare bones theme for theme developers learning the ropes. Nothing fancy, just data.",
+	"demo": "http://koken.me",
+	"author": {
+		"name": "Koken",
+		"link": "https://store.koken.me/authors/koken"
+	},
+	"koken_version_required": "0.21.0",
+
+	"navigation_groups": {
+		"footer": {
+			"label": "Footer",
+			"defaults": [
+				"front", "albums", "contents", "essays", "twitter", "facebook", "gplus"
+			]
+		}
+	}
+}

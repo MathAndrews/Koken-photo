@@ -1,0 +1,313 @@
+body {
+	background:#d5e5f2;
+	color:rgba(0,0,0,0.6);
+	color:#428bca;
+	margin-top:2em;
+}
+
+/* everybody get down */
+h1,h2,h3,h4,h5,h6,hgroup,
+ul,ol,dd,
+blockquote,
+p,figure,
+nav,header,article,section,time,
+img,.slideshow,
+pre,table,fieldset,hr
+{
+    margin-bottom:1.42857143rem;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin-top:0;
+}
+
+.comma_sep span:after {
+	content:", ";
+}
+
+.comma_sep span:last-child:after {
+	content:"";
+}
+
+h1 > a,
+h2 > a,
+h3 > a,
+h4 > a,
+h5 > a,
+h6 > a
+{
+	color:inherit;
+}
+
+hr {
+	border-top-color: rgba(0,0,0,0.2);
+}
+
+label {
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+textarea
+{
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+button {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #fff;
+	background-color: #337ab7;
+	border-color: #2e6da4;
+}
+
+textarea[rows] {
+	height: auto;
+}
+
+textarea {
+	max-width: 100%;
+}
+
+/*
+	LAYOUT
+*/
+
+div.container {
+	width:960px;
+	margin:0 auto;
+	text-align:left;
+}
+
+header.main {
+	margin-bottom:3em;
+}
+
+footer.main {
+	clear:both;
+	padding-bottom:2em;
+}
+
+nav {
+	margin:1em 0;
+}
+
+nav ul {
+	margin:0;
+	padding:0;
+}
+
+nav ul li {
+	display:inline-block;
+	margin:0 15px 0 0;
+}
+
+/* highlights navigation link for current page - assigned automatically by Koken */
+nav a.k-nav-current,
+nav a.k-pagination-current
+{
+	font-weight:bold;
+}
+
+#pagination {
+	margin-bottom:2em;
+}
+
+main {
+	display:block;
+	margin-bottom:3em;
+}
+
+article {
+	margin-bottom:3em;
+}
+
+section {
+	margin-bottom:2em;
+}
+
+section header {
+	margin-bottom:2em;
+}
+
+footer {
+	font-size:90%;
+}
+
+.slideshow_nav {
+	margin-bottom:1em;
+	clear:both;
+}
+
+ul.blank {
+	list-style:none;
+	padding:0;
+	margin:0 0 1em;
+}
+
+ul.blank li {
+	padding:0;
+	margin:0;
+	display:block;
+}
+
+ul.feat-essays {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+ul.feat-essays li {
+	margin:0;
+	padding:0;
+	float:left;
+	width:22%;
+}
+
+ul.feat-essays li {
+	margin-right:4%;
+}
+
+ul.feat-essays li:nth-child(4n+4) {
+	margin-right:0;
+}
+
+ul.feat-essays li:nth-child(4n+1) {
+	clear:left;
+}
+
+#bread {
+	font-size:90%;
+	margin-top:0;
+	margin-bottom:2em;
+}
+
+#content-pag {
+	float:right;
+}
+
+div.lcol {
+	width:70%;
+	float:left;
+	margin-right:5%;
+}
+
+div.rcol {
+	width:25%;
+	float:left;
+}
+
+div.lcol.nofloat, div.rcol.nofloat { float:none; }
+
+ol.archive li {
+	width:210px;
+	margin-right:10px;
+	margin-bottom:10px !important;
+	display:inline-block;
+}
+
+ol.archive.content li {
+	width:148px;
+}
+
+ol.archive.albums li {
+	width:227px;
+}
+
+ol.archive.essays li {
+	width:310px;
+	margin-bottom:1em !important;
+}
+
+ol.archive.content li:nth-child(6), ol.archive.albums li:nth-child(4), ol.archive.essays li:nth-child(3) {
+	margin-right:0;
+}
+
+p.unlisted {
+	background:#789dbb;
+	padding:1em;
+	color:#d5e5f2;
+}
+
+/*
+	Helper classes
+	See: http://help.koken.me/customer/portal/articles/828695-css-classes
+*/
+
+/* wrapper for inserted media */
+.k-content-embed {
+	margin:1em 0;
+}
+
+/* wrapper of the media asset itself */
+.k-content {
+	line-height:0; /* resolves html whitespace */
+}
+
+/* wrapper for title/caption underneath photo/video, if turned on */
+.k-content-text {
+	padding:0 0 1em;
+}
+
+/* wrapper for the media's title */
+.k-content-title {
+	display:block;
+	font-style:italic;
+}
+
+/* wrapper for the media's caption */
+.k-content-caption {}
+
+/* used for fallback text in console */
+.k-note {}
+
+/* assigned to any link that links to the lightbox */
+.k-link-lightbox { cursor:-webkit-zoom-in;cursor:-moz-zoom-in; }
+
+/* assigned to body by Image Protect plugin if Pinterest pinning is disabled */
+body.k-image-protect-nopin a.social-pinterest {
+	display:none;
+}

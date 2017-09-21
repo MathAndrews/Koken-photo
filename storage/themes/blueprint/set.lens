@@ -1,0 +1,191 @@
+<koken:include file="inc/header.html" />
+
+<!-- Load this template's source data (set) and limit for pagination -->
+<koken:load limit="20">
+
+	<!-- Add Facebook Open Graph and Twitter Cards metadata for nicer sharing -->
+	<koken:head>
+		<meta property="og:site_name" content="{{ site.title }}" />
+		<meta property="og:title" content="{{ album.title strip_html="true" }}" />
+		<meta property="og:description" content="{{ album.summary | album.description strip_html="true" }}" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="{{ album.url }}" />
+		<koken:covers><koken:shift>
+		<meta property="og:image" content="{{ content.presets.medium_large.url }}" />
+		<meta property="og:image:width" content="{{ content.presets.medium_large.width }}" />
+		<meta property="og:image:height" content="{{ content.presets.medium_large.height }}" />
+		</koken:shift></koken:covers>
+		<koken:not empty="profile.twitter">
+			<meta name="twitter:card" content="gallery" />
+			<meta name="twitter:site" content="@{{ profile.twitter }}" />
+			<meta name="twitter:creator" content="@{{ profile.twitter }}" />
+			<koken:covers minimum="4" limit="4">
+				<koken:loop>
+					<meta name="twitter:image{{ index }}" content="{{ content.presets.medium_large.cropped.url }}">
+				</koken:loop>
+			</koken:covers>
+		</koken:not>
+	</koken:head>
+
+	<!-- Display breadcrumb navigation -->
+	<nav id="bread">
+
+		<!-- Displays links to neighbor albums plus link back to albums index -->
+		<!-- Only show if the album is public, not unlisted -->
+		<koken:if true="album.public">
+			<div id="content-pag">
+				<koken:previous>
+					<koken:link title="View {{ album.title }}">&larr; {{ album.title }}</koken:link>
+					&nbsp;&nbsp;
+				</koken:previous>
+				<koken:next>
+					<koken:link title="View {{ album.title }}">{{ album.title }} &rarr;</koken:link>
+				</koken:next>
+			</div>
+		</koken:if>
+
+		<koken:breadcrumbs />
+
+	</nav>
+
+	<!-- If set's visibility is unlisted, show message -->
+	<koken:unlisted>
+		<p class="unlisted">
+			This set is unlisted. Please don't share a link to it.
+		</p>
+	</koken:unlisted>
+
+	<div class="lcol nofloat">
+
+		<!-- Display the set's title -->
+		<h2>
+			{{ album.title }}
+		</h2>
+
+	</div>
+
+	<!-- Display the set's description -->
+	{{ album.description paragraphs="true" }}
+
+	<div class="lcol">
+
+		<!-- Loop over all the albums the set contains. Dislay cover image, title and caption and link each to albums.lens -->
+		<koken:loop>
+
+			<section class="item">
+
+				<koken:link title="View {{ album.title }}">
+					<koken:img />
+				</koken:link>
+
+				<h3>
+					<koken:link title="View {{ album.title }}">{{ album.title }}</koken:link>
+				</h3>
+
+				<p>{{ album.summary }}</p>
+
+				<footer>
+
+					<ul class="blank">
+
+						<!-- Display the timestamp -->
+						<li>
+							<strong>Published:</strong>
+							<!-- Link to view all albums published the same month -->
+							<koken:link to="archive" title="View all collections published this month">
+								<koken:time />
+							</koken:link>
+						</li>
+
+						<!-- Display the set's categories -->
+						<koken:categories>
+							<li>
+								<strong>Categories:</strong>
+								<koken:loop separator=", ">
+									<!-- Link each to archive.albums.lens -->
+									<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
+										{{ category.title }}
+									</koken:link>
+								</koken:loop>
+							</li>
+						</koken:categories>
+
+						<!-- Display the set's tags -->
+						<koken:tags>
+							<li>
+								<strong>Tags:</strong>
+								<koken:loop separator=", ">
+									<!-- Link each to archive.albums.lens -->
+									<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ tag.title }}">
+										{{ title }}
+									</koken:link>
+								</koken:loop>
+							</li>
+						</koken:tags>
+
+					</ul>
+
+				</footer>
+
+			</section>
+
+		</koken:loop>
+
+		<!-- Display pagination links -->
+		<koken:include file="inc/pagination.html" />
+
+	</div> <!-- close .lcol -->
+
+	<div class="rcol">
+
+		<aside>
+
+			<section>
+				<!-- Links to view albums by publish date in archive.albums.lens -->
+				<h5>View {{ labels.album.plural case="lower" }} by date</h5>
+				<koken:dates limit_to="albums">
+					<koken:select label="Select month" />
+				</koken:dates>
+			</section>
+
+			<section>
+				<!-- Links to view albums by category in archive.albums.lens -->
+				<koken:categories limit_to="albums" order_by="album_count">
+				<h5>View {{ labels.album.plural case="lower" }} by {{ labels.category.singular case="lower" }}</h5>
+				<koken:loop>
+					<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ category.title }}">
+						{{ category.title }} ({{ category.counts.total }})
+					</koken:link>
+					<br>
+				</koken:loop>
+				</koken:categories>
+			</section>
+
+			<section>
+				<!-- Links to view albums by tag in archive.albums.lens -->
+				<koken:tags limit_to="albums" order_by="album_count">
+					<h5>View {{ labels.album.plural case="lower" }} by {{ labels.tag.singular case="lower" }}</h5>
+					<koken:loop>
+						<koken:link title="View all {{ labels.album.plural case='lower' }} in {{ tag.title }}">
+							{{ tag.title }} ({{ tag.counts.total }})
+						</koken:link>
+						<br>
+					</koken:loop>
+				</koken:tags>
+			</section>
+
+    </aside>
+
+	</div> <!-- close .rcol -->
+
+	<!-- Fallback content if no data was loaded by koken:load -->
+	<koken:else>
+
+		<!-- Display fallback message in Site editor only -->
+		<koken:note>
+			No set found. Create one in the Library.
+		</koken:note>
+
+</koken:load>
+
+<koken:include file="inc/footer.html" />
