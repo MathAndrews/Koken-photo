@@ -10,53 +10,9 @@
         </header>
     </section>
 
-    <!-- Mini Posts -->
-    <koken:load source="albums" filter:featured="true" limit="3">
-        <section>
-            <div class="mini-posts">
-                <!-- Insert template tags/properties -->
-                <koken:loop>
-                    <article class="mini-post">
-                        <header>
-                            <h3>
-                                <koken:link>{{ album.title }}</koken:link>
-                            </h3>
-                            <time class="published" datetime="{{ album.published_on date_format=" Y-m-d
-                            " }}">{{ album.published_on date_format="j F Y" }}</time>
-                        </header>
-                        <koken:link class="image">
-                            <koken:img size="2:1" crop="true"/>
-                        </koken:link>
-                    </article>
-                </koken:loop>
-            </div>
-        </section>
-    </koken:load>
+    <koken:include file="inc/latest_favorite_albums_3.html" />
 
-    <!-- Posts List -->
-    <koken:load source="albums" order_by="published_on" order_direction="desc" limit="5">
-    <section>
-            <!-- Insert template tags/properties -->
-            <ul class="posts">
-                <koken:loop>
-                    <li>
-                        <article>
-                            <header>
-                                <h3>
-                                    <koken:link>{{ album.title }}</koken:link>
-                                </h3>
-                                <time class="published" datetime="{{ album.published_on date_format=" Y-m-d
-                                " }}">{{ album.published_on date_format="j F Y" }}</time>
-                            </header>
-                            <koken:link class="image">
-                                <koken:img width="64" height="64" crop="true"/>
-                            </koken:link>
-                        </article>
-                    </li>
-                </koken:loop>
-            </ul>
-    </section>
-    </koken:load>
+    <koken:include file="inc/latest_albums_5.html" />
 
     <!-- About -->
     <section class="blurb">

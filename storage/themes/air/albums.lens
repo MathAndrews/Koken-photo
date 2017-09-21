@@ -7,12 +7,17 @@
       <article class="post">
         <header>
           <div class="title">
-            <h2><koken:link>{{ album.title }}</a></koken:link></h2>
+            <h2>
+              <koken:link>{{ album.title }}</a></koken:link>
+            </h2>
             <p>{{ album.summary }}</p>
           </div>
           <div class="meta">
             <time class="published" datetime="{{ album.published_on date_format=" Y-m-d
             " }}">{{ album.published_on date_format="j F Y" }}</time>
+            <span class="author">
+            <koken:img size="1:1" width="38" height="38" data="album.covers.last" crop="true" />
+            </span>
           </div>
         </header>
         <koken:link class="image featured">
@@ -21,12 +26,14 @@
         <p>{{ album.summary }}</p>
         <footer>
           <ul class="actions">
-            <li><a href="#" class="button big">Continue Reading</a></li>
+            <li>
+              <koken:link class="button big">Continue Reading</koken:link>
+            </li>
           </ul>
 
           <koken:tags>
             {{ count }}
-            <ul class="tags" >
+            <ul class="tags">
               <koken:loop separator=" " limit="3">
                 <li>
                   <!-- Link each to archive.contents.lens to view other images/videos assigned same tag -->
@@ -35,7 +42,7 @@
                   </koken:link>
                 </li>
               </koken:loop>
-            </ul >
+            </ul>
           </koken:tags>
         </footer>
       </article>
