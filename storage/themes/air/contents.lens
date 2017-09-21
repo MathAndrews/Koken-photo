@@ -2,7 +2,7 @@
 <!-- Main -->
 <div id="main">
   <article class="post">
-    <koken:load order_direction="desc">
+    <koken:load source="contents" order_direction="desc">
       <header>
         <div class="title">
           <h2>Latest uploads</h2>
@@ -37,6 +37,19 @@
             <time class="published">
               {{ content.published_on date_format="j F Y" }}
             </time>
+
+
+            <!-- If content is included in one or more albums, display links to each album -->
+            <koken:albums>
+              <span class="albums">
+                <strong>Albums:</strong>
+                <koken:loop>
+                  <koken:link title="View {{ album.title }}">
+                    {{ album.title }}
+                  </koken:link>
+                </koken:loop>
+                </span>
+            </koken:albums>
             <footer>
               <koken:tags>
                 <ul class="tags">
