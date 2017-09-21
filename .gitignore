@@ -1,3 +1,5 @@
 *.cache
 .idea
 node_modules
+storage/cache
+storage/originals
