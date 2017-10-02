@@ -1,4 +1,11 @@
 @import "future/main.scss";
 
+@import 'future/libs/vars';
+@import 'future/libs/functions';
+@import 'future/libs/mixins';
+@import 'future/libs/skel';
+
+@import "layout.scss";
 @import "albums.scss";
 @import "contents.scss";
+@import "article.scss";

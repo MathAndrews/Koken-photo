@@ -1,5 +1,6 @@
 <koken:load source="albums" order_by="published_on" order_direction="desc" limit="5">
-  <section>
+  <section class="lastest-albums">
+    <h2>Derniers albums</h2>
     <!-- Insert template tags/properties -->
     <ul class="posts">
       <koken:loop>
@@ -12,8 +13,9 @@
               <time class="published" datetime="{{ album.published_on date_format=" Y-m-d
               " }}">{{ album.published_on date_format="j F Y" }}</time>
             </header>
+
             <koken:link class="image">
-              <koken:img width="64" height="64" crop="true"/>
+              <koken:img width="64" height="64" crop="true" data="album.covers.last"/>
             </koken:link>
           </article>
         </li>

@@ -25,11 +25,6 @@
         <meta property="og:url" content="{{ location.site_url }}{{ location.here }}" />
       </koken:head>
 
-      <!-- Display breadcrumbs because it's an archive page -->
-      <nav id="bread">
-        <koken:breadcrumbs separator="/" />
-      </nav>
-
       <div class="lcol">
 
         <section>
@@ -109,8 +104,9 @@
   </article>
 </div>
 
+<koken:asset file="node_modules/imagesloaded/imagesloaded.pkgd.js" />
 <koken:asset file="node_modules/isotope-layout/dist/isotope.pkgd.min.js" />
-<koken:asset file="js/init-isotope.js" />
+<koken:asset file="js/isotope.ini.js" />
 
 
 <koken:include file="inc/sidebar.html" />

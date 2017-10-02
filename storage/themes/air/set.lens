@@ -28,12 +28,12 @@
               <koken:img class="item-image" />
 
               <div class="mask">
-                <h1 class="title">{{ content.title | content.filename }}</h1>
+                <h1 class="title">{{ album.title | album.filename }}</h1>
                 <div class="date">
                   <koken:time class="published" />
                 </div>
                 <div class="description">
-                  {{content.caption}}
+                  {{album.summary paragraphs="true" }}
                 </div>
               </div>
             </koken:link>
@@ -59,7 +59,7 @@
                 <koken:img class="item-image" />
 
                 <div class="mask">
-                  <h1 class="title">{{ content.title | content.filename }}</h1>
+                  <h1 class="title">{{ album.title | album.filename }}</h1>
                   <div class="date">
                     <koken:time class="published" />
                   </div>
@@ -97,7 +97,7 @@
     </article>
     <koken:else>
       <koken:note>
-        No album data found
+        No set data found
       </koken:note>
   </koken:load>
 </div>

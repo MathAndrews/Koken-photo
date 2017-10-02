@@ -60,7 +60,7 @@
 </div>
 
 <koken:asset file="node_modules/isotope-layout/dist/isotope.pkgd.min.js" />
-<koken:asset file="js/init-isotope.js" />
+<koken:asset file="js/isotope.ini.js" />
 
 
 <koken:include file="inc/sidebar.html" />

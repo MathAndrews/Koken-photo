@@ -32,25 +32,28 @@
             <h2>{{ content.title | content.filename }}</h2>
           </div>
           <div class="meta">
-            <koken:first>
-              <koken:time class="published" />
-              <time class="published" datetime="{{ content.published_on date_format=" Y-m-d
-              " }}">{{ content.published_on date_format="j F Y" }}</time>
-            </koken:first>
-            <span class="author">
-                    <span class="name">Mathieu</span>
-          <img src="{{ location.theme_path }}/images/logo.png" alt="" />
-              </span>
+            <koken:content_image>
+              <koken:parent>
+                <koken:time class="published" />
+                <koken:link>
+                <span class="author">
+                    <span class="name">{{ album.title}}</span>
+                    <koken:img size="1:1" width="38" height="38" data="album.covers.last" crop="true" />
+                </span>
+                </koken:link>
+              </koken:parent>
+            </koken:content_image>
           </div>
         </header>
         <!-- Displayed if content is an image -->
         <koken:content_image>
-<span class="image featured">
-        <!-- Load image in lightbox viewer if clicked -->
-        <koken:link lightbox="true" bind_to_key="l" title="View in lightbox">
-          <koken:img />
-        </koken:link>
-</span>
+          <div class="image featured">
+            <!-- Load image in lightbox viewer if clicked -->
+            <koken:link lightbox="true" bind_to_key="l" title="View in lightbox">
+              <koken:img />
+
+            </koken:link>
+          </div>
         </koken:content_image>
 
         <!-- Displayed if content is a video -->
@@ -61,6 +64,8 @@
 
         </koken:content_video>
         <p> {{content.caption paragraphs="true" }}</p>
+
+
         <footer>
           <!-- Display assigned categories -->
           <koken:categories>
@@ -147,6 +152,9 @@
       </koken:next>
     </ul>
   </koken:load>
+
+
+  OLD:
   <koken:load>
 
     <footer>

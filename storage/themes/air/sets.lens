@@ -1,7 +1,7 @@
 <koken:include file="inc/header.html" />
 <!-- Main -->
 <div id="main">
-  <koken:load source="albums" filter:featured="false">
+  <koken:load limit="6">
     <koken:loop>
       <!-- Post -->
       <article class="post">

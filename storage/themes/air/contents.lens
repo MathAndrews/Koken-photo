@@ -22,8 +22,9 @@
               </span>
         </div>
       </header>
-      <div class="grid-isotope">
+      <div class="grid-isotope"  data-isotope-gutter="10">
         <div class="grid-sizer"></div>
+        <div class="gutter-sizer"></div>
         <koken:loop>
           <div class="grid-item">
             <koken:link class="item-image">
@@ -75,8 +76,9 @@
   </article>
 </div>
 
+<koken:asset file="node_modules/imagesloaded/imagesloaded.pkgd.js" />
 <koken:asset file="node_modules/isotope-layout/dist/isotope.pkgd.min.js" />
-<koken:asset file="js/init-isotope.js" />
+<koken:asset file="js/isotope.ini.js" />
 
 
 <koken:include file="inc/sidebar.html" />
