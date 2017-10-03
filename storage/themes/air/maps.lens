@@ -1,13 +1,69 @@
 <koken:include file="inc/header.html" />
 <!-- Main -->
 <div id="main">
+  i
+  <koken:load source="contents">
+    <koken:loop>
+      <h2>{{ content.title | content.filename }}</h2>
+      <koken:img/>
+      <koken:geolocation>
+       Location: {{ geolocation.latitude }},{{ geolocation.longitude }}
+        <a href="http://maps.google.com/?q={{ geolocation.latitude }},{{ geolocation.longitude }}">View map</a>
+      </koken:geolocation>
+      {{ exif.label }}
+      <koken:exif>
+        {{ exif.label }}
+        <koken:loop>
+          <strong>{{ exif.label }}</strong>
+          {{ exif.clean | exif.raw }}
+        </koken:loop>
+      </koken:exif>
+      <koken:iptc>
+        <ul>
+          <koken:loop>
+            <li>
+              {{ iptc.label }}: {{ iptc.value }}
+            </li>
+          </koken:loop>
+        </ul>
+      </koken:iptc>
+    </koken:loop>
+  </koken:load>
   <div id="map"></div>
 </div>
-
+<script>
+  var locations = [
+    {lat: 46.563910, lng: 7.154312},
+    {lat: 46.718234, lng: 5.363181},
+    {lat: 46.727111, lng: 5.371124},
+    {lat: 46.848588, lng: 5.209834},
+    {lat: 46.851702, lng: 5.216968},
+    {lat: 46.671264, lng: 5.863657},
+    {lat: 46.304724, lng: 4.662905},
+    {lat: 46.817685, lng: 7.699196},
+    {lat: 46.828611, lng: 5.790222},
+    {lat: 46.750000, lng: 5.116667},
+    {lat: 46.759859, lng: 4.128708},
+    {lat: 46.765015, lng: 4.133858},
+    {lat: 46.770104, lng: 6.143299},
+    {lat: 46.773700, lng: 5.145187},
+    {lat: 46.774785, lng: 5.137978},
+    {lat: 46.819616, lng: 4.968119},
+    {lat: 46.330766, lng: 4.695692},
+    {lat: 46.927193, lng: 7.053218},
+    {lat: 46.330162, lng: 4.865694},
+    {lat: 46.734358, lng: 7.439506},
+    {lat: 46.734358, lng: 7.501315},
+    {lat: 46.735258, lng: 7.438000},
+    {lat: 46.999792, lng: 5.463352}
+  ]
+</script>
 
 <koken:asset file="js/map.ini.js" />
 
 <koken:asset file="js/maps/markerclusterer.js" />
+
+<koken:asset async defer file="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5zITLI9BQLvmqFyKyQCOnEZ1LirB-3LA&callback=initMap" />
 
 <koken:include file="inc/sidebar.html" />
 <koken:include file="inc/footer.html" />
