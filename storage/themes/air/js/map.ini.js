@@ -17,17 +17,19 @@ function initMap() {
 
     var infowincontent = document.createElement('div');
     var strong = document.createElement('strong');
-    strong.textContent = 'name'
+    strong.textContent = location.name || ''
     infowincontent.appendChild(strong);
     infowincontent.appendChild(document.createElement('br'));
 
     var text = document.createElement('text');
-    text.textContent = 'address'
+    text.textContent = location.link || ''
     infowincontent.appendChild(text);
+
+    console.log(location);
 
     var marker = new google.maps.Marker({
       position: location,
-      // label: labels[i % labels.length]
+      label: location.name
     });
 
 
