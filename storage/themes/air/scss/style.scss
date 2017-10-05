@@ -5,7 +5,11 @@
 @import 'future/libs/mixins';
 @import 'future/libs/skel';
 
-@import "layout.scss";
-@import "albums.scss";
-@import "contents.scss";
-@import "article.scss";
+
+@import 'mixins';
+
+@import "layout";
+@import "albums";
+@import "contents";
+@import "article";
+@import "categories";

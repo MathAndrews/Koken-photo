@@ -1,0 +1,21 @@
+.categories {
+  .list {
+    margin: 0 0 2em 0;
+    &:after, &:before {
+      display: table;
+      content: " ";
+    }
+    &:after {
+      clear: both;
+    }
+    article {
+      float: left;
+      width: 33.33%;
+      text-align: center;
+      @include image-show(rgba(_palette(accent), 0.8));
+    }
+  }
+  .btn-pagination + .list{
+    margin: 2em 0 0 0;
+  }
+}

@@ -30,25 +30,29 @@
   <div class="categories">
     <koken:load source="categories">
       <koken:loop>
-        <h3> {{ category.title }} ({{ category.counts.total }}) </h3>
-        <koken:load source="albums" filter:category="{{category.title}}" order_direction="asc">
+        <h3> {{ category.title }}</h3>
+        <koken:load source="albums" filter:category="{{category.title}}" order_direction="asc" limit="3">
           <div class="list">
             <koken:loop>
               <article class="show">
                 <koken:link title="View {{ album.title }}" class="image">
                   <koken:img size="1:1" width="231" height="231" ratio="true" />
-                </koken:link>
-                <div class="mask">
-                  <h4 class="title">{{ album.title }}</h4>
-                  <div class="date">
-                    <koken:time class="published" />
+                  <div class="mask">
+                    <h4 class="title">{{ album.title }}</h4>
+                    <div class="date">
+                      <koken:time class="published" />
+                    </div>
                   </div>
-                </div>
+                </koken:link>
               </article>
             </koken:loop>
           </div>
-
         </koken:load>
+        <div class="btn-pagination">
+          <koken:if condition="{{ category.counts.total }} > 3">
+            <koken:link class="button big btn-next btn-right">Voir cette categorie</koken:link>
+          </koken:if>
+        </div>
       </koken:loop>
     </koken:load>
   </div>
