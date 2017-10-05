@@ -40,22 +40,22 @@
   }
 }
 
-.btn-next {
-  @include icon('', after);
+//.btn-next {
+//  @include icon('', after);
+//
+//  &:after {
+//    content: '\f054';
+//  }
+//}
 
-  &:after {
-    content: '\f054';
-  }
-}
 
-
-.btn-previous {
-  @include icon('', before);
-
-  &:before {
-    content: '\f053';
-  }
-}
+//.btn-previous {
+//  @include icon('', before);
+//
+//  &:before {
+//    content: '\f053';
+//  }
+//}
 
 .btn-right {
   float: right;
