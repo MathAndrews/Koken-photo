@@ -1,7 +1,0 @@
-<koken:load source="contents" order_by="modified_on"  order_direction="DESC">
-  <koken:loop>
-    <koken:not empty="content.geolocation.latitude">
-      {lat: {{ content.geolocation.latitude }}, lng: {{ content.geolocation.longitude }}, name: '{{ content.title }}', link: '<koken:link>View</koken:link>'},
-    </koken:not>
-  </koken:loop>
-</koken:load>

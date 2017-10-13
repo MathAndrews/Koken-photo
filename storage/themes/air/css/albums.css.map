@@ -1,9 +1,0 @@
-{
-	"version": 3,
-	"file": "albums.css",
-	"sources": [
-		"../scss/albums.scss"
-	],
-	"names": [],
-	"mappings": "AAEA,AAEI,aAFS,CACX,aAAa,CACX,UAAU;AAFd,AAGI,aAHS,CACX,aAAa,CAEX,WAAW,CAAC;EACV,KAAK,EAAE,KAAK,GACb;;AALL,AAMI,aANS,CACX,aAAa,CAKX,aAAa,CAAC;EACZ,KAAK,EAAE,CAAC,GACT"
-}
